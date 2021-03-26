@@ -1,23 +1,18 @@
 package com.epam.array.reader;
 
 import com.epam.array.entity.ArrayEntity;
-import com.epam.array.exception.ArrayException;
-import com.epam.array.service.impl.SortServiceImpl;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class TestArrayReader {
 
-    ArrayEntity myIntArray;
     ArrayReader reader;
 
     @BeforeClass
     public void setMyIntArray() {
-        //myIntArray = new ArrayEntity(new int[]{1, -2, 5, 2, -7});
         reader = new ArrayReader();
     }
 
