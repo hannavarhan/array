@@ -1,10 +1,11 @@
 package com.epam.array.service;
 
-import com.epam.array.entity.MyIntArray;
+import com.epam.array.entity.ArrayEntity;
+import com.epam.array.exception.ArrayException;
 
 public interface ReplaceService {
 
-    MyIntArray replacePositive(MyIntArray myIntArray);
+    ArrayEntity replacePositive(ArrayEntity myIntArray) throws ArrayException;
 
-    MyIntArray replaceNegative(MyIntArray myIntArray);
+    ArrayEntity replaceNegative(ArrayEntity myIntArray) throws ArrayException;
 }

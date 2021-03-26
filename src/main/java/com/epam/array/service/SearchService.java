@@ -1,17 +1,18 @@
 package com.epam.array.service;
 
-import com.epam.array.entity.MyIntArray;
+import com.epam.array.entity.ArrayEntity;
+import com.epam.array.exception.ArrayException;
 
 public interface SearchService {
-    int findMin(MyIntArray myIntArray);
+    int findMin(ArrayEntity myIntArray) throws ArrayException;
 
-    int findMax(MyIntArray myIntArray);
+    int findMax(ArrayEntity myIntArray) throws ArrayException;
 
-    double findAverage(MyIntArray myIntArray);
+    double findAverage(ArrayEntity myIntArray) throws ArrayException;
 
-    int findSum(MyIntArray myIntArray);
+    int findSum(ArrayEntity myIntArray) throws ArrayException;
 
-    int findPositiveElementsNumber(MyIntArray myIntArray);
+    int findPositiveElementsNumber(ArrayEntity myIntArray) throws ArrayException;
 
-    int findNegativeElementsNumber(MyIntArray myIntArray);
+    int findNegativeElementsNumber(ArrayEntity myIntArray) throws ArrayException;
 }
