@@ -2,6 +2,7 @@ package com.epam.array.service.impl;
 
 import com.epam.array.entity.ArrayEntity;
 import com.epam.array.exception.ArrayException;
+import com.epam.array.service.SearchService;
 import com.epam.array.service.SortService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +14,6 @@ public class SortServiceImpl implements SortService {
     private final static Logger logger = LogManager.getLogger(SortServiceImpl.class);
 
     private Random rand = new Random();
-    private int MAX_ELEMENT = 1_000_000;
 
     public ArrayEntity quickSort(ArrayEntity arrayEntity) throws ArrayException {
         ArrayEntity result;
@@ -22,26 +22,30 @@ public class SortServiceImpl implements SortService {
         return result;
     }
 
-    /*@Override
+    @Override
     public ArrayEntity countingSort(ArrayEntity arrayEntity) throws ArrayException {
         ArrayEntity result = new ArrayEntity(arrayEntity.size());
-        int[] countingArr = new int[MAX_ELEMENT + 1];
+        int maxElement = 1_000_000;
+        SearchService searchService = new SearchServiceImpl();
+        int realMaxElement = searchService.findMax(arrayEntity);
+        int realMinElement = searchService.findMin(arrayEntity);
+        if (realMaxElement - realMinElement > maxElement) {
+            logger.error("Elements are too large");
+            throw new ArrayException("Elements are too large");
+        }
+        int[] countingArr = new int[realMaxElement - realMinElement + 1];
         for (int i = 0; i < arrayEntity.size(); i++) {
-            if (arrayEntity.get(i) > MAX_ELEMENT) {
-                logger.error("Elements are too large");
-                throw new ArrayException("Elements are too large");
-            }
-            countingArr[arrayEntity.get(i)]++;
+            countingArr[arrayEntity.get(i) - realMinElement]++;
         }
         int l = 0;
-        for (int i = 0; i <= MAX_ELEMENT; i++) {
+        for (int i = 0; i <= realMaxElement - realMinElement; i++) {
             for (int j = 0; j < countingArr[i]; j++) {
-                result.set(l++, i);
+                result.set(l++, i + realMinElement);
             }
         }
         logger.info("Sorted array is:" + result);
         return result;
-    }*/
+    }
 
     @Override
     public ArrayEntity mergeSort(ArrayEntity arrayEntity) throws ArrayException {

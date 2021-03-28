@@ -7,7 +7,7 @@ public interface SortService {
 
     ArrayEntity quickSort(ArrayEntity arrayEntity) throws ArrayException;
 
-    // ArrayEntity countingSort(ArrayEntity arrayEntity) throws ArrayException;
+    ArrayEntity countingSort(ArrayEntity arrayEntity) throws ArrayException;
 
     ArrayEntity mergeSort(ArrayEntity arrayEntity) throws ArrayException;
 }
