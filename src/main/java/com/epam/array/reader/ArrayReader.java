@@ -2,7 +2,8 @@ package com.epam.array.reader;
 
 import com.epam.array.entity.ArrayEntity;
 import com.epam.array.exception.ArrayException;
-import com.epam.array.service.impl.SearchServiceImpl;
+import com.epam.array.exception.ArrayValidateException;
+import com.epam.array.validator.StringValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,7 +14,7 @@ import java.io.IOException;
 
 public class ArrayReader {
 
-    private final static Logger logger = LogManager.getLogger(SearchServiceImpl.class);
+    private final static Logger logger = LogManager.getLogger(ArrayReader.class);
 
     public ArrayEntity readArrayFromFile(String path) throws FileNotFoundException {
         ArrayEntity result = null;
@@ -23,17 +24,14 @@ public class ArrayReader {
             String line = reader.readLine();
             while (line != null) {
                 try {
-                    result = new ArrayEntity(line.split(" ").length);
-                    for (int i = 0; i < line.split(" ").length; i++) {
-                        result.set(i, Integer.parseInt(line.split(" ")[i]));
-                    }
+                    result = StringValidator.validate(line);
                     logger.info("string " + line + " is read");
                     return result;
-                } catch (NumberFormatException e) {
+                } catch (ArrayValidateException e) {
                     result = null;
                     line = reader.readLine();
                     logger.info("line is " + line);
-                    logger.error("problems with parsing");
+                    logger.error("Invalid line");
                 }
             }
         } catch (FileNotFoundException e) {
