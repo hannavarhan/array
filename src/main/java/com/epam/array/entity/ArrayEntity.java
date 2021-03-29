@@ -24,7 +24,7 @@ public class ArrayEntity {
     }
 
     public ArrayEntity(int[] array) {
-        this.array = array;
+        this.array = array.clone();
     }
 
     public int get(int i) throws ArrayException {
@@ -41,6 +41,10 @@ public class ArrayEntity {
             throw new ArrayException("Wrong set position");
         }
         array[position] = value;
+    }
+
+    public int[] getArray() {
+        return this.array.clone();
     }
 
     public int size() {
