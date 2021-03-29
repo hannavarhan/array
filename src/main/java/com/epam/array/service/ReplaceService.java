@@ -5,7 +5,7 @@ import com.epam.array.exception.ArrayException;
 
 public interface ReplaceService {
 
-    ArrayEntity replacePositive(ArrayEntity myIntArray) throws ArrayException;
+    ArrayEntity replacePositive(ArrayEntity arrayEntity) throws ArrayException;
 
-    ArrayEntity replaceNegative(ArrayEntity myIntArray) throws ArrayException;
+    ArrayEntity replaceNegative(ArrayEntity arrayEntity) throws ArrayException;
 }
