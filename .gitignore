@@ -1,5 +1,6 @@
 target/
 out/
+logs/
 .history
 .cache
 *.DS_Store
