@@ -7,7 +7,7 @@ public class StringValidator {
 
     final static String IS_VALID_STRING = "^([-+])?\\d+(\\s(([-+])?\\d+))*$";
 
-    public static boolean validate(String line) {
+    public static boolean isArray(String line) {
         Pattern pattern = Pattern.compile(IS_VALID_STRING);
         Matcher matcher = pattern.matcher(line.trim());
         return matcher.matches();
