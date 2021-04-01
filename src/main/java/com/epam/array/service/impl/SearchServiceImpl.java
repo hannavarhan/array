@@ -11,6 +11,10 @@ public class SearchServiceImpl implements SearchService {
     private final static Logger logger = LogManager.getLogger(SearchServiceImpl.class);
 
     public int findMin(ArrayEntity arrayEntity) throws ArrayException {
+        if (arrayEntity == null) {
+            logger.error("Array is null in findMin method");
+            throw new ArrayException("Array is null");
+        }
         int min = arrayEntity.get(0);
         for (int i = 0; i < arrayEntity.size(); i++) {
             if (arrayEntity.get(i) < min) {
@@ -22,6 +26,10 @@ public class SearchServiceImpl implements SearchService {
     }
 
     public int findMax(ArrayEntity arrayEntity) throws ArrayException {
+        if (arrayEntity == null) {
+            logger.error("Array is null in findMax method");
+            throw new ArrayException("Array is null");
+        }
         int max = arrayEntity.get(0);
         for (int i = 0; i < arrayEntity.size(); i++) {
             if (arrayEntity.get(i) > max) {
@@ -33,11 +41,20 @@ public class SearchServiceImpl implements SearchService {
     }
 
     public double findAverage(ArrayEntity arrayEntity) throws ArrayException {
-        logger.info("average: " + findSum(arrayEntity) / arrayEntity.size() + " of: " + arrayEntity);
-        return (double) findSum(arrayEntity) / arrayEntity.size();
+        if (arrayEntity == null) {
+            logger.error("Array is null in findAverage method");
+            throw new ArrayException("Array is null");
+        }
+        double average = (double) findSum(arrayEntity) / arrayEntity.size();
+        logger.info("average: " + average + " of: " + arrayEntity);
+        return average;
     }
 
     public int findSum(ArrayEntity arrayEntity) throws ArrayException {
+        if (arrayEntity == null) {
+            logger.error("Array is null in findSum method");
+            throw new ArrayException("Array is null");
+        }
         int sum = 0;
         for (int i = 0; i < arrayEntity.size(); i++) {
             sum += arrayEntity.get(i);
@@ -47,6 +64,10 @@ public class SearchServiceImpl implements SearchService {
     }
 
     public int findPositiveElementsNumber(ArrayEntity arrayEntity) throws ArrayException {
+        if (arrayEntity == null) {
+            logger.error("Array is null in findPositiveElementsNumber method");
+            throw new ArrayException("Array is null");
+        }
         int posNumber = 0;
         for (int i = 0; i < arrayEntity.size(); i++) {
             if (arrayEntity.get(i) > 0) {
@@ -58,6 +79,10 @@ public class SearchServiceImpl implements SearchService {
     }
 
     public int findNegativeElementsNumber(ArrayEntity arrayEntity) throws ArrayException {
+        if (arrayEntity == null) {
+            logger.error("Array is null in findNegativeElementsNumber method");
+            throw new ArrayException("Array is null");
+        }
         int negNumber = 0;
         for (int i = 0; i < arrayEntity.size(); i++) {
             if (arrayEntity.get(i) < 0) {
