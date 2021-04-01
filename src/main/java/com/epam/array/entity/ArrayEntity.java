@@ -66,7 +66,7 @@ public class ArrayEntity {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("MyIntArray");
+        final StringBuilder sb = new StringBuilder("ArrayEntity");
         sb.append(Arrays.toString(array));
         return sb.toString();
     }
